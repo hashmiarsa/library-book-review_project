@@ -279,7 +279,7 @@ function borderPage2animation(){
                 width: rect.width,
                 height: rect.height,
                 // top: rect.top + window.scrollY, // Adjust position considering scroll
-                top: (rect.top + window.scrollY) - (window.innerWidth * 0.48)-5,
+                top: (rect.top + window.scrollY) - (window.innerWidth * 0.48)-3,
                 left: rect.left + window.scrollX,
                 ease: 'power3.out', // Use a smoother easing curve
                 borderColor: '#FF4411',
