@@ -1,0 +1,232 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="practice.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="centered-div">
+        <div class="upper-div"></div>
+        <div class="lower-div"></div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+
+    <script src="./practice.js"></script>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Transition Divs</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 50vw;
+            height: 30vw;
+            position: relative;
+            overflow: hidden;
+            /* background-color: red; */
+        }
+
+        .green-box, .yellow-box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .green-box {
+            background-color: transparent;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .yellow-box {
+            background-color: transparent;
+            top: 100%; /* Initially below the container */
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hover effect */
+        .container:hover .green-box {
+            transform: trhanslateY(-100%); /* Move green box up */
+        }
+
+        .container:hover .yellow-box {
+            transform: trhanslateY(-100%); /* Move yellow box into the green box's place */
+        }
+        .green-box h1{
+            color: white;
+        }
+        .yellow-box h1{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="green-box">
+            <h1>black</h1>
+        </div>
+        <div class="yellow-box">
+            <h1>black</h1>
+        </div>
+    </div>
+
+    <script>
+        // Optional: JavaScript to add hover effect via JS events instead of CSS
+        const container = document.querySelector('.container');
+        const greenBox = document.querySelector('.green-box');
+        const yellowBox = document.querySelector('.yellow-box');
+
+        container.addEventListener('mouseenter', () => {
+            greenBox.style.transform = 'translateY(-100%)';
+            yellowBox.style.transform = 'translateY(-100%)';
+        });
+
+        container.addEventListener('mouseleave', () => {
+            greenBox.style.transform = 'translateY(0)';
+            yellowBox.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Line Animation</title>
+    <style>
+        .hover-text {
+            position: relative;
+            display: inline-block;
+            font-size: 24px;
+        }
+
+        .hover-text::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: black;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .hover-text:hover::before {
+            width: 100%;
+        }
+        .star-rating {
+  direction: rtl;
+  font-size: 2em;
+}
+.star-rating input {
+  display: none;
+}
+.star-rating label {
+  color: grey;
+  cursor: pointer;
+}
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: gold;
+}
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc;
+  transition: color 0.4s ease-in-out;
+}
+
+.circle::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: #ff6347;
+  border-radius: 50%;
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+  z-index: 0;
+}
+
+.circle i {
+  position: relative;
+  z-index: 1;
+  font-size: 24px;
+  transition: color 0.4s ease-in-out;
+}
+
+.circle:hover::before {
+  width: 200%;
+  height: 200%;
+}
+
+.circle:hover i {
+  color: #fff;
+}
+
+
+    </style>
+</head>
+<body>
+    <h1 class="hover-text">Hover Over Me</h1>
+    <div class="star-rating">
+        <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+        <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+        <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+        <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+        <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
+      </div>
+      <div class="circle">
+        <i class="ri-search-line"></i>
+      </div>
+      
+      <script>
+        const stars = document.querySelectorAll('.star-rating input');
+stars.forEach(star => {
+  star.addEventListener('change', function() {
+    localStorage.setItem('rating', this.value);
+  });
+});
+
+window.onload = function() {
+  const savedRating = localStorage.getItem('rating');
+  if (savedRating) {
+    document.querySelector(`#star${savedRating}`).checked = true;
+  }
+};
+
+      </script>
+      
+</body>
+</html>

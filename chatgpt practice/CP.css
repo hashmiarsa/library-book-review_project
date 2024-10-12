@@ -1,0 +1,245 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#image {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+#image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#main {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.221);
+}
+
+#page1 {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    z-index: 999;
+}
+
+#content {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+#text_div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 300px;
+    background-color: orange;
+}
+
+#button {
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+}
+
+#page2 {
+    position: relative;
+    min-height: 100vh;
+    background-color: red;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+}
+
+#upper_block, #lower_block {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid transparent;
+}
+
+.box1, .box2 {
+    width: 33.33%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    background-color: lightblue;
+    border: 2px solid #000;
+    text-align: center;
+    cursor: pointer;
+}
+
+#borderDiv {
+    position: absolute;
+    border: 2px solid red;
+    pointer-events: none;
+    display: none;
+} */
+
+/* ----------------------page postioning--------------------------- */
+/* Basic reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Fixed background image */
+#background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-image: url('https://plus.unsplash.com/premium_photo-1679076061222-b66e6838a8b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGl6emElMjBjdXR0aW5nJTIwdmlkZW98ZW58MHx8MHx8fDA%3D'); */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Keep the image behind all content */
+}
+
+#background-image img{
+    object-fit: cover;
+}
+
+/* Main container with semi-transparent black background */
+#main {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.288); /* Transparent black */
+    color: white;
+    min-height: 100vh;
+    z-index: 1;
+}
+
+/* Page 1 styles */
+#page1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+.red-box, .green-box {
+    width: 100px;
+    height: 100px;
+}
+
+.red-box {
+    background-color: red;
+}
+
+.green-box {
+    background-color: green;
+}
+
+/* Page 2 styles */
+#page2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    /* padding: 1%; */
+}
+
+#block1{
+    width: 90%;
+    height: 40%;
+    background-color: lightsalmon;
+    border: 2px solid black;
+    display: flex;
+
+
+}
+
+#block2{
+    width: 90%;
+    height: 40%;
+    background-color: rgb(225, 64, 0);
+    border: 2px solid black;
+    display: flex;
+
+}
+
+.box1{
+    height: 100%;
+    width: 33.33%;
+    border: 2px solid rgb(225, 64, 0) ;
+
+}
+
+.box2{
+    height: 100%;
+    width: 33.33%;
+    border: 2px solid lightsalmon ;
+
+}
+
+#borderDiv {
+    position: absolute;
+    border: 20px solid rgb(0, 255, 4);
+    pointer-events: none;
+    display: none;
+} 
+/* .blue-box, .yellow-box {
+    width: 100px;
+    height: 100px;
+}
+
+.blue-box {
+    background-color: blue;
+}
+
+.yellow-box {
+    background-color: yellow;
+} */
+/* -------------------------------------------------------------chatgpt navbar ---------------------------------------*/
+
+.navbar {
+    display: flex; /* Use flexbox to arrange items in a row */
+    justify-content: center; /* Center the items */
+    background-color: #333; /* Dark background color */
+    padding: 15px; /* Padding for the navbar */
+}
+
+.nav-item {
+    margin: 0 15px; /* Margin between nav items */
+}
+
+.nav-item a {
+    color: white; /* Link text color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold font for links */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.nav-item a:hover {
+    color: #ff6347; /* Change color on hover (tomato color) */
+}
