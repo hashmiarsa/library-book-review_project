@@ -194,111 +194,111 @@ Page2scrollTriggerAnimation();
 Page2scrollTriggerAnimation()
 
 
-function borderPage2animation() {
-  document.addEventListener("DOMContentLoaded", () => {
-      const boxes = document.querySelectorAll('.rec_col'); 
-      const borderDiv = document.getElementById('borderDiv');
+// function borderPage2animation() {
+//   document.addEventListener("DOMContentLoaded", () => {
+//       const boxes = document.querySelectorAll('.rec_col'); 
+//       const borderDiv = document.getElementById('borderDiv');
 
       
-      borderDiv.style.position = 'absolute';
-      borderDiv.style.border = '5px solid #fff';
-      borderDiv.style.pointerEvents = 'none'; 
-      borderDiv.style.opacity = 0; 
-      borderDiv.style.display = 'none'; 
+//       borderDiv.style.position = 'absolute';
+//       borderDiv.style.border = '5px solid #fff';
+//       borderDiv.style.pointerEvents = 'none'; 
+//       borderDiv.style.opacity = 0; 
+//       borderDiv.style.display = 'none'; 
 
      
-      boxes.forEach(box => {
-          box.addEventListener('mouseenter', () => {
+//       boxes.forEach(box => {
+//           box.addEventListener('mouseenter', () => {
              
-              const rect = box.getBoundingClientRect();
+//               const rect = box.getBoundingClientRect();
 
              
-              gsap.to(borderDiv, {
-                  duration: 0.9,
-                  width: rect.width,
-                  height: rect.height,
-                  top: (rect.top + window.scrollY) - (window.innerWidth * 0.48) - 5,
-                  left: rect.left + window.scrollX,
-                  ease: 'power3.out',
-                  borderColor: '#FF4411',
-                  opacity: 1, 
-                  onStart: () => {
-                      borderDiv.style.display = 'block'; 
-                  }
-              });
-          });
+//               gsap.to(borderDiv, {
+//                   duration: 0.9,
+//                   width: rect.width,
+//                   height: rect.height,
+//                   top: (rect.top + window.scrollY) - (window.innerWidth * 0.48) - 5,
+//                   left: rect.left + window.scrollX,
+//                   ease: 'power3.out',
+//                   borderColor: '#FF4411',
+//                   opacity: 1, 
+//                   onStart: () => {
+//                       borderDiv.style.display = 'block'; 
+//                   }
+//               });
+//           });
 
-          box.addEventListener('mouseleave', () => {
+//           box.addEventListener('mouseleave', () => {
              
-              const rect = box.getBoundingClientRect();
-              const isOut = !(mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom);
+//               const rect = box.getBoundingClientRect();
+//               const isOut = !(mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom);
 
-              if (isOut) {
+//               if (isOut) {
        
-                  gsap.to(borderDiv, {
-                      duration: 0.5, 
-                      onComplete: () => {
-                          borderDiv.style.display = 'none'; 
-                      }
-                  });
-              }
-          });
-      });
+//                   gsap.to(borderDiv, {
+//                       duration: 0.5, 
+//                       onComplete: () => {
+//                           borderDiv.style.display = 'none'; 
+//                       }
+//                   });
+//               }
+//           });
+//       });
 
     
-      let mouseX = 0;
-      let mouseY = 0;
+//       let mouseX = 0;
+//       let mouseY = 0;
 
-      document.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-      });
-  });
-}
-
-borderPage2animation();
-// function borderPage2animation(){
-//   document.addEventListener("DOMContentLoaded", () => {
-//     const boxes = document.querySelectorAll('.rec_col'); // Select each column in rec_box
-//     const borderDiv = document.getElementById('borderDiv');
-  
-//     // Set borderDiv's initial style for smooth transitions
-//     borderDiv.style.position = 'absolute';
-//     borderDiv.style.border = '5px solid #fff';
-//     borderDiv.style.pointerEvents = 'none'; // Prevent borderDiv from interfering with hover events
-  
-//     // Add event listeners to each box
-//     boxes.forEach(box => {
-//         box.addEventListener('mouseenter', () => {
-//             // Get the current box's position and size
-//             const rect = box.getBoundingClientRect();
-  
-//             // Show borderDiv and animate it to the hovered box's position and size
-//             gsap.to(borderDiv, {
-//                 duration: 0.7, // Adjust the duration for smoother animation
-//                 width: rect.width,
-//                 height: rect.height,
-//                 // top: rect.top + window.scrollY, // Adjust position considering scroll
-//                 top: (rect.top + window.scrollY) - (window.innerWidth * 0.48)-5,
-//                 left: rect.left + window.scrollX,
-//                 ease: 'power3.out', // Use a smoother easing curve
-//                 borderColor: '#FF4411',
-//                 onStart: () => {
-//                     borderDiv.style.display = 'block'; // Show the div when animation starts
-//                 }
-//             });
-//         });
-  
-//         // Optional hover-out behavior, but we leave the border visible
-//         box.addEventListener('mouseleave', () => {
-                
-//           });
-//     });
+//       document.addEventListener('mousemove', (e) => {
+//           mouseX = e.clientX;
+//           mouseY = e.clientY;
+//       });
 //   });
+// }
+
+// borderPage2animation();
+function borderPage2animation(){
+  document.addEventListener("DOMContentLoaded", () => {
+    const boxes = document.querySelectorAll('.rec_col'); // Select each column in rec_box
+    const borderDiv = document.getElementById('borderDiv');
+  
+    // Set borderDiv's initial style for smooth transitions
+    borderDiv.style.position = 'absolute';
+    borderDiv.style.border = '5px solid #fff';
+    borderDiv.style.pointerEvents = 'none'; // Prevent borderDiv from interfering with hover events
+  
+    // Add event listeners to each box
+    boxes.forEach(box => {
+        box.addEventListener('mouseenter', () => {
+            // Get the current box's position and size
+            const rect = box.getBoundingClientRect();
+  
+            // Show borderDiv and animate it to the hovered box's position and size
+            gsap.to(borderDiv, {
+                duration: 0.7, // Adjust the duration for smoother animation
+                width: rect.width,
+                height: rect.height,
+                // top: rect.top + window.scrollY, // Adjust position considering scroll
+                top: (rect.top + window.scrollY) - (window.innerWidth * 0.48)-5,
+                left: rect.left + window.scrollX,
+                ease: 'power3.out', // Use a smoother easing curve
+                borderColor: '#FF4411',
+                onStart: () => {
+                    borderDiv.style.display = 'block'; // Show the div when animation starts
+                }
+            });
+        });
+  
+        // Optional hover-out behavior, but we leave the border visible
+        box.addEventListener('mouseleave', () => {
+                
+          });
+    });
+  });
   
 
-// }
-// borderPage2animation()
+}
+borderPage2animation()
 
 
 function bookFlipAnimation(){
