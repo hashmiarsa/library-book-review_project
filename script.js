@@ -49,7 +49,7 @@
 //         // delay:0
     
 //     })
-//     tl.from("#page1",{
+//     tl.from("#page1,#page2,#page3",{
 //         y:1600,
 //         opacity:0,
 //         // delay:0.2,
@@ -77,32 +77,101 @@
 //   }
   
 //   loadingAnimation();
+
+// gsap.to("#loader",{
+//   y:-1500,
+//   duration:4,
+//   ease:Power4,
+//   delay:2
+// })
+// gsap.from("#video,#main",{
+//   y:1200,
+//   opacity:0,
+//   duration:0.5,
+//   ease:Power4
+// })
+// GSAP loader timer animation
+
+function loadingAnimation2(){
+  gsap.from(".timer h2", {
+    opacity: 0,
+    duration: 1,
+    onStart: function () {
+        let time = document.querySelector("#time");
+        let grow = 0;
+  
+        // Timer to increase the number from 0 to 100
+        let interval = setInterval(function () {
+            grow++;
+            if (grow <= 100) {
+                time.textContent = grow;
+            } else {
+                time.textContent = 100;
+                clearInterval(interval);  // Stop the timer once it hits 100
+            }
+        }, 20);
+    },
+  });
+  
+  // Loader and main page transition
+  window.addEventListener('load', function () {
+    // GSAP Timeline for animations
+    const tl = gsap.timeline();
+  
+    // After 5 seconds, move loader up and bring video/main from below
+    setTimeout(() => {
+        tl.to("#loader", {
+            y: "-100%",  // Move loader upwards
+            duration: 1.5,
+            ease: "power2.inOut"
+        })
+        .to("#video", {
+            top: "0%",  // Move video into view from below
+            duration: 1.5,
+            ease: "power2.inOut"
+        }, "-=1")  // Start this animation 1 second earlier for smoother transition
+        .to("#main", {
+            top: "0%",  // Move main content into view from below
+            duration: 1.5,
+            ease: "power2.inOut",
+            onComplete: function () {
+                // Hide the video and show the main content after the animation completes
+                document.querySelector('#main').style.display = 'block';
+            }
+        }, "-=1");
+    }, 3000);  // Wait 5 seconds before starting the animation
+  });
+  
+
+}
+loadingAnimation2()
+
   
 function homePageTextAnimation(){
   var text=document.querySelector("#text");
 gsap.from("#first_text h1",{
   y:150,
   opacity:0,
-  delay:0.8,
+  delay:3.7,
   duration:0.5,
   stagger:0.25,
 })
 gsap.from("#sec_text h1",{
   y:150,
   opacity:0,
-  delay:0.8,
+  delay:3.7,
   duration:0.5,
 })
 gsap.from("#para",{
   y:150,
   opacity:0,
-  delay:1.3,
+  delay:4,
   duration:0.5,
 })
 gsap.from("#button",{
   y:150,
   opacity:0,
-  delay:1.3,
+  delay:4,
   duration:0.5,
 })
 
