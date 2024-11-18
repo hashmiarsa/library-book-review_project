@@ -1,3 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Categories</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column {
+            height: 20%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .column div {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .column div:hover {
+            background-color: #0056b3;
+        }
+
+        .content {
+            height: 80%;
+            display: flex;
+        }
+
+        .left {
+            width: 30%;
+            background-color: #e6e6e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left img {
+            width: 80%;
+            height: auto;
+        }
+
+        .right {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .right .section {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .right .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .right .section div {
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+        }
+
+        .right .section div img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="column">
+        <div id="all">All</div>
+        <div id="financial">Financial</div>
+        <div id="programming">Programming</div>
+        <div id="business">Business</div>
+    </div>
+    <div class="content">
+        <div class="left">
+            <img id="left-image" src="" alt="">
+        </div>
+        <div class="right">
+            <div class="section">
+                <div><img id="right-image-1" src="" alt=""></div>
+                <div><img id="right-image-2" src="" alt=""></div>
+                <div><img id="right-image-3" src="" alt=""></div>
+            </div>
+            <div class="section">
+                <div><img id="right-image-4" src="" alt=""></div>
+                <div><img id="right-image-5" src="" alt=""></div>
+                <div><img id="right-image-6" src="" alt=""></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const books = {
+            all: {
+                left: 'https://picsum.photos/200/300?random=1',
+                right: [
+                    'https://picsum.photos/200/300?random=2',
+                    'https://picsum.photos/200/300?random=3',
+                    'https://picsum.photos/200/300?random=4',
+                    'https://picsum.photos/200/300?random=5',
+                    'https://picsum.photos/200/300?random=6',
+                    'https://picsum.photos/200/300?random=7',
+                ]
+            },
+            financial: {
+                left: 'https://picsum.photos/200/300?random=8',
+                right: [
+                    'https://picsum.photos/200/300?random=9',
+                    'https://picsum.photos/200/300?random=10',
+                    'https://picsum.photos/200/300?random=11',
+                    'https://picsum.photos/200/300?random=12',
+                    'https://picsum.photos/200/300?random=13',
+                    'https://picsum.photos/200/300?random=14',
+                ]
+            },
+            programming: {
+                left: 'https://picsum.photos/200/300?random=15',
+                right: [
+                    'https://picsum.photos/200/300?random=16',
+                    'https://picsum.photos/200/300?random=17',
+                    'https://picsum.photos/200/300?random=18',
+                    'https://picsum.photos/200/300?random=19',
+                    'https://picsum.photos/200/300?random=20',
+                    'https://picsum.photos/200/300?random=21',
+                ]
+            },
+            business: {
+                left: 'https://picsum.photos/200/300?random=22',
+                right: [
+                    'https://picsum.photos/200/300?random=23',
+                    'https://picsum.photos/200/300?random=24',
+                    'https://picsum.photos/200/300?random=25',
+                    'https://picsum.photos/200/300?random=26',
+                    'https://picsum.photos/200/300?random=27',
+                    'https://picsum.photos/200/300?random=28',
+                ]
+            }
+        };
+
+        const leftImage = document.getElementById('left-image');
+        const rightImages = [
+            document.getElementById('right-image-1'),
+            document.getElementById('right-image-2'),
+            document.getElementById('right-image-3'),
+            document.getElementById('right-image-4'),
+            document.getElementById('right-image-5'),
+            document.getElementById('right-image-6'),
+        ];
+
+        document.querySelectorAll('.column div').forEach(category => {
+            category.addEventListener('click', () => {
+                const selectedCategory = category.id;
+                const bookData = books[selectedCategory];
+
+                // Update the left image
+                leftImage.src = bookData.left;
+
+                // Update the right images
+                rightImages.forEach((img, index) => {
+                    img.src = bookData.right[index];
+                });
+            });
+        });
+
+        // Default to "All"
+        document.getElementById('all').click();
+    </script>
+</body>
+</html>
+
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,7 +307,7 @@
     </script>
 </body>
 </html> -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -229,4 +424,4 @@ window.onload = function() {
       </script>
       
 </body>
-</html>
+</html> -->
